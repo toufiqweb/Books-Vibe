@@ -11,7 +11,7 @@ const BookDetail = () => {
 
   const matchedBookData = books.find((book) => book.bookId == bookParamsId);
 
-//   console.log(matchedBookData);
+  //   console.log(matchedBookData);
   const {
     author,
     bookId,
@@ -25,10 +25,7 @@ const BookDetail = () => {
     yearOfPublishing,
   } = matchedBookData;
 
-
-  const {handleMarkAsRead} = useContext(BookContext)
-
- 
+  const { handleMarkAsRead, handleWishList } = useContext(BookContext);
 
   return (
     <div className="max-w-6xl mx-auto p-8 bg-base-100 min-h-[40vh] flex items-center  my-10">
@@ -119,7 +116,10 @@ const BookDetail = () => {
             >
               Mark as Read
             </button>
-            <button className="btn btn-outline  text-lg font-semibold rounded-xl">
+            <button
+              onClick={() => handleWishList(matchedBookData)}
+              className="btn btn-outline  text-lg font-semibold rounded-xl"
+            >
               Add to Wishlist
             </button>
           </div>
