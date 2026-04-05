@@ -4,26 +4,26 @@ import { toast } from "react-toastify";
 export const BookContext = createContext();
 
 const BookProvider = ({ children }) => {
-  const [storedBooks, setStoredBooks] = useState([]);
-  const [wishBooks, setWishBooks] = useState([]);
+  const [readListBooks, setReadListBooks] = useState([]);
+  const [wishListBooks, setWishListBooks] = useState([]);
 
   const handleMarkAsRead = (currentBook) => {
-    const isExistBook = storedBooks.find(
+    const isExistBook = readListBooks.find(
       (book) => book.bookId === currentBook.bookId,
     );
 
     if (isExistBook) {
       toast.error("Book already exit to wish list");
     } else {
-      setStoredBooks([...storedBooks, currentBook]);
+      setReadListBooks([...readListBooks, currentBook]);
       toast.success(`${currentBook.bookName} added to wish list`);
     }
 
-    console.log(storedBooks);
+    console.log(readListBooks);
   };
   //   /////////////////////////////////////////////
   const handleWishList = (currentBook) => {
-    const isExistReadList = storedBooks.find(
+    const isExistReadList = readListBooks.find(
       (book) => book.bookId === currentBook.bookId,
     );
 
@@ -32,26 +32,26 @@ const BookProvider = ({ children }) => {
       return;
     }
 
-    const isExistBook = wishBooks.find(
+    const isExistBook = wishListBooks.find(
       (book) => book.bookId === currentBook.bookId,
     );
 
     if (isExistBook) {
       toast.error("Book already exit to wish list");
     } else {
-      setWishBooks([...wishBooks, currentBook]);
+      setWishListBooks([...wishListBooks, currentBook]);
       toast.success(`${currentBook.bookName} added to wish list`);
     }
 
-    console.log(storedBooks);
+    console.log(readListBooks);
   };
   //   /////////////////////////////////////////////
   const data = {
-    storedBooks,
-    setStoredBooks,
+    readListBooks,
+    setReadListBooks,
     handleMarkAsRead,
-    wishBooks,
-    setWishBooks,
+    wishListBooks,
+    setWishListBooks,
     handleWishList,
   };
   return <BookContext.Provider value={data}>{children}</BookContext.Provider>;

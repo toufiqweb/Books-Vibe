@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useParams } from "react-router";
 import { BookContext } from "../../components/context/BookProvider";
 
@@ -14,7 +14,6 @@ const BookDetail = () => {
   //   console.log(matchedBookData);
   const {
     author,
-    bookId,
     bookName,
     image,
     publisher,
