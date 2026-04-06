@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BookContext } from "../../components/context/BookProvider";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -6,8 +6,13 @@ import ReadListedBooks from "../../components/listedBooks/ReadListedBooks";
 import WishListedBooks from "../../components/listedBooks/WishListedBooks";
 
 const Books = () => {
+
+  const [sortingType , setSortingType] = useState("")
+
+  console.log(sortingType);
+  
   return (
-    <div className="container mx-auto my-12 px-4">
+    <div className="container mx-auto my-12 pt-4 space-y-4">
       {/* Heading */}
       <div className="text-center mb-8">
         <h1 className="text-3xl sm:text-4xl font-bold mb-2">
@@ -17,8 +22,24 @@ const Books = () => {
           Manage your read and wishlist books
         </p>
       </div>
+      <div className="dropdown dropdown-bottom  flex justify-self-center">
+        <div tabIndex={0} role="button" className="btn m-1">
+          Sort by ⬇
+        </div>
+        <ul
+          tabIndex="-1"
+          className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
+        >
+          <li onClick={() => setSortingType("pages")}>
+            <a>Pages</a>
+          </li>
+          <li  onClick={() => setSortingType("rating")}>
+            <a>Rating</a>
+          </li>
+        </ul>
+      </div>
 
-      <div className="bg-base-200 rounded-2xl shadow-md p-4 sm:p-6 border border-base-300">
+      <div className="bg-base-200 rounded-2xl shadow-md p-4 sm:p-6 border border-base-300 ">
         <Tabs>
           <TabList className="flex justify-center gap-2 mb-6 bg-base-300 p-2 rounded-xl w-fit mx-auto">
             <Tab
@@ -38,13 +59,13 @@ const Books = () => {
 
           <TabPanel>
             <div className="animate-fadeIn">
-              <ReadListedBooks />
+              <ReadListedBooks sortingType={sortingType}/>
             </div>
           </TabPanel>
 
           <TabPanel>
             <div className="animate-fadeIn">
-              <WishListedBooks />
+              <WishListedBooks sortingType={sortingType}/>
             </div>
           </TabPanel>
         </Tabs>

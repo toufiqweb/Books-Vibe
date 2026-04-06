@@ -18,7 +18,7 @@ const Book = ({ book }) => {
   <figure className="p-14 rounded-2xl flex justify-center items-center bg-[#F3F3F3] relative overflow-hidden">
     
     {/* gradient overlay */}
-    <div className="absolute inset-0 bg-gradient-to-br from-green-400/10 to-transparent 
+    <div className="absolute inset-0 bg-linear-to-br from-green-400/10 to-transparent 
                     opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
     <img
