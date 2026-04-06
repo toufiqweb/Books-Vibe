@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { useLoaderData, useNavigate, useParams } from "react-router";
 import { BookContext } from "../../components/context/BookProvider";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const BookDetail = () => {
   const { bookParamsId } = useParams();
@@ -8,6 +9,7 @@ const BookDetail = () => {
   //   console.log(bookParamsId, books, " book detail");
 
   //   console.log(books);
+  const navigate = useNavigate();
 
   const matchedBookData = books.find((book) => book.bookId == bookParamsId);
 
@@ -27,7 +29,7 @@ const BookDetail = () => {
   const { handleMarkAsRead, handleWishList } = useContext(BookContext);
 
   return (
-    <div className="max-w-6xl mx-auto p-8 bg-base-100 min-h-[40vh] flex items-center  my-10">
+    <div className="max-w-5xl mx-auto p-8 bg-base-100 min-h-[40vh] flex items-center  my-10">
       <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-start w-full">
         {/* Left Side - Book Cover */}
         <div className="flex-1 p-20 rounded-2xl flex justify-center items-center bg-[#F3F3F3]">
@@ -122,6 +124,12 @@ const BookDetail = () => {
               Add to Wishlist
             </button>
           </div>
+          <button
+            onClick={() => navigate("/")}
+            className="btn btn-outline  text-lg font-semibold rounded-xl flex items-center"
+          >
+            <IoMdArrowRoundBack /> Back
+          </button>
         </div>
       </div>
     </div>
