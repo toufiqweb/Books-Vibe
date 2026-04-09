@@ -83,7 +83,7 @@ https://github.com/toufiqweb/Books-Vibe.git
 **Go to the project directory**
    
 ```bash
-cd AI-Model-Hub
+cd Books-Vibe
 ```
 
 **Install dependencies**
